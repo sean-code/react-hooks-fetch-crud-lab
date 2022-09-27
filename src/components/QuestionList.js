@@ -16,7 +16,7 @@ function QuestionList() {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE",
     })
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then(() => {
         const updatedQuestions = questions.filter((q) => q.id !== id);
         setQuestions(updatedQuestions);
@@ -31,9 +31,9 @@ function QuestionList() {
       },
       body: JSON.stringify({ correctIndex }),
     })
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then((updatedQuestion) => {
-        const updatedQuestions = questions.map((q) => {
+        const updatedQuestions = questions.map((quest) => {
           if (quest.id === updatedQuestion.id) return updatedQuestion;
           return quest;
         });
